@@ -254,7 +254,7 @@ ul {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('hero_catering.png');
+  background-image: url('Logo.png');
   background-size: cover;
   background-position: center;
   transform: scale(1.05);
@@ -1169,3 +1169,128 @@ section {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ==========================================
+   LOGO REPLACEMENT STYLING
+   ========================================== */
+.bio-image.logo-replacement {
+  object-fit: contain !important;
+  background-color: var(--dark-card) !important;
+  padding: 3rem !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6) !important;
+  transition: all 0.3s ease !important;
+}
+
+.bio-image.logo-replacement:hover {
+  border-color: var(--gold) !important;
+  box-shadow: inset 0 0 40px rgba(212, 175, 55, 0.15), 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+  transform: translateY(-5px);
+}
+
+.bio-layout-centered {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+.bio-layout-centered .divider {
+  margin: 1.5rem auto;
+}
+.bio-layout-centered .bio-quote {
+  margin: 1.5rem auto;
+  font-size: 1.5rem;
+}
+
+.catering-services-text-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-text-link {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-main);
+  background: var(--dark-card);
+  border: 1.5px solid var(--border);
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  display: inline-block;
+}
+
+.service-text-link:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.18);
+  background: rgba(200, 169, 110, 0.04);
+}
+
+.contact-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-method-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+}
+
+.contact-method-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.contact-method-card .contact-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(200, 169, 110, 0.1);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.contact-method-card .contact-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--gold);
+}
+
+.contact-method-card .contact-info-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.contact-method-card .contact-info-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: var(--cream);
+  font-weight: 500;
+}
+
+
+

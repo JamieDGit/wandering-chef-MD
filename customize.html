@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wandering Chef — Live Image Customizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --charcoal: #1e1b18;
+      --dark-grey: #2a2521;
+      --gold: #d4af37;
+      --gold-hover: #f3cf65;
+      --cream: #f9f6f0;
+      --text-muted: #a69f96;
+      --border: rgba(212, 175, 55, 0.2);
+      --border-focus: rgba(212, 175, 55, 0.6);
+      --success: #4caf50;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--charcoal);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--dark-grey);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .header-logo span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .btn {
+      background-color: var(--gold);
+      color: var(--charcoal);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn:hover {
+      background-color: var(--gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(212, 175, 55, 0.1);
+      color: var(--gold-hover);
+    }
+
+    .main-container {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 75px);
+      overflow: hidden;
+    }
+
+    /* Target slots column */
+    .slots-sidebar {
+      width: 400px;
+      background-color: var(--dark-grey);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 1.5rem;
+    }
+
+    .sidebar-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--gold);
+    }
+
+    .sidebar-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .slot-card {
+      background: rgba(30, 27, 24, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .slot-card.active-target {
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+    }
+
+    .slot-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .slot-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--cream);
+    }
+
+    .slot-file {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+    }
+
+    .slot-preview-container {
+      position: relative;
+      width: 100%;
+      height: 140px;
+      background-color: #12100e;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .slot-preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .slot-preview-empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .btn-select-slot {
+      width: 100%;
+      font-size: 0.85rem;
+      padding: 0.5rem;
+      justify-content: center;
+    }
+
+    /* Gallery panel */
+    .gallery-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--charcoal);
+      overflow-y: auto;
+      padding: 2rem;
+    }
+
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .gallery-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--cream);
+    }
+
+    .gallery-title span {
+      color: var(--gold);
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      font-weight: 400;
+    }
+
+    .gallery-filters {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .filter-btn {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background-color: var(--gold);
+      color: var(--charcoal);
+      border-color: var(--gold);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .gallery-item {
+      background-color: var(--dark-grey);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.04);
+      border-color: var(--gold);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .gallery-item img, .gallery-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-item-video-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.7);
+      padding: 4px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gold);
+    }
+
+    .gallery-item-video-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--gold);
+    }
+
+    /* Modal / Popup for media detail */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(18, 16, 14, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 2rem;
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background-color: var(--dark-grey);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: var(--cream);
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: background-color 0.3s;
+    }
+
+    .modal-close:hover {
+      background-color: rgba(212,175,55,0.8);
+      color: var(--charcoal);
+    }
+
+    .modal-preview-area {
+      flex: 1.2;
+      background-color: #12100e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      max-height: 600px;
+      position: relative;
+    }
+
+    .modal-preview-area img, .modal-preview-area video {
+      max-width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+    }
+
+    .modal-details-area {
+      flex: 0.8;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--border);
+    }
+
+    .modal-detail-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--gold);
+    }
+
+    .modal-detail-file {
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      word-break: break-all;
+    }
+
+    .modal-section-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      color: var(--cream);
+    }
+
+    .modal-actions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      overflow-y: auto;
+      max-height: 300px;
+    }
+
+    .btn-assign {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--cream);
+      text-align: left;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-assign:hover {
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.08);
+      padding-left: 1.25rem;
+    }
+
+    .btn-assign span.target-file {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: var(--dark-grey);
+      border: 1px solid var(--gold);
+      border-left: 4px solid var(--gold);
+      padding: 1rem 1.5rem;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transform: translateY(150%);
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+    }
+
+    .toast-success {
+      border-left-color: var(--success);
+      border-color: var(--success);
+    }
+
+    .toast-icon {
+      font-size: 1.2rem;
+    }
+
+    .toast-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .main-container {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+      }
+      .slots-sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .gallery-panel {
+        height: auto;
+      }
+      .modal-content {
+        flex-direction: column;
+      }
+      .modal-preview-area {
+        min-height: 250px;
+      }
+      .modal-details-area {
+        border-left: none;
+        border-top: 1px solid var(--border);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="/" class="header-logo">Wandering <span>Chef</span></a>
+    <div class="header-nav">
+      <a href="/" class="btn btn-secondary" target="_blank">View Live Website ↗</a>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <!-- Target slots column -->
+    <div class="slots-sidebar">
+      <h2 class="sidebar-title">Active Website Images</h2>
+      <p class="sidebar-desc">These are the images currently displayed on your website pages. Select an image from the library on the right to replace any of these slots.</p>
+      
+      <div id="slots-container">
+        <!-- Dynamic Slots will be populated here -->
+      </div>
+    </div>
+
+    <!-- Gallery panel -->
+    <div class="gallery-panel">
+      <div class="gallery-header">
+        <h2 class="gallery-title">Food Images Library <span id="gallery-count">0 items</span></h2>
+        <div class="gallery-filters">
+          <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+          <button class="filter-btn" onclick="filterGallery('image')">Images</button>
+          <button class="filter-btn" onclick="filterGallery('video')">Videos</button>
+        </div>
+      </div>
+
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Food images will be populated here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Media Details Modal -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-preview-area" id="modal-preview">
+        <!-- Image or Video tag will go here -->
+      </div>
+      <div class="modal-details-area">
+        <h3 class="modal-detail-title">Selected Media</h3>
+        <p class="modal-detail-file" id="modal-filename"></p>
+        
+        <h4 class="modal-section-title">Assign to Website Slot</h4>
+        <div class="modal-actions-list" id="modal-actions">
+          <!-- Button list for assignment -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span class="toast-icon">✓</span>
+    <span class="toast-text" id="toast-message">Image replaced successfully!</span>
+  </div>
+
+  <script>
+    // Active slots on the website to display in sidebar
+    const WEBSITE_SLOTS = [
+      { id: 'hero', name: 'Hero Main Background', file: 'hero_catering.png', desc: 'Main header background on homepage and generic header' },
+      { id: 'logo', name: 'Brand Logo', file: 'DOMAIN NAME WANDERING CHEF.png', desc: 'Main brand logo displayed on home and about sections' },
+      { id: 'bris', name: 'Bris Catering Photo', file: 'bris_catering.png', desc: 'Main image representing Bris catering on homepage and Bris page' },
+      { id: 'bar', name: 'Bar Mitzvah Card', file: 'bar_mitzvah.png', desc: 'Main image for Bar Mitzvah catering and page header' },
+      { id: 'wedding', name: 'Wedding & Other Card', file: 'wedding_catering.png', desc: 'Main image for Wedding catering and page header' },
+      { id: 'appetizer', name: 'Appetizers Platter', file: 'appetizers_platter.png', desc: 'Gourmet appetizers platter in gallery and contact banner' },
+      { id: 'shabbat', name: 'Shabbat Dinner Table', file: 'shabbat_dinner.png', desc: 'Elegant Shabbat celebration table in gallery' },
+      { id: 'dessert', name: 'Dessert & Pastry Table', file: 'dessert_table.png', desc: 'Dessert table display in galleries' },
+      { id: 'kitchen', name: 'Kitchen Preparation', file: 'catering_kitchen.png', desc: 'Kitchen team and preparation photo' }
+    ];
+
+    let foodImages = [];
+    let selectedMedia = null;
+
+    // Load slots and library
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSlots();
+      fetchLibrary();
+    });
+
+    function renderSlots() {
+      const container = document.getElementById('slots-container');
+      container.innerHTML = '';
+      
+      WEBSITE_SLOTS.forEach(slot => {
+        const cacheBuster = `?t=${Date.now()}`;
+        const card = document.createElement('div');
+        card.className = 'slot-card';
+        card.id = `slot-${slot.id}`;
+        card.innerHTML = `
+          <div class="slot-info">
+            <div>
+              <div class="slot-name">${slot.name}</div>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.1rem;">${slot.desc}</p>
+            </div>
+            <span class="slot-file">${slot.file}</span>
+          </div>
+          <div class="slot-preview-container">
+            <img class="slot-preview" src="${slot.file}${cacheBuster}" alt="${slot.name}" onerror="handlePreviewError(this)" />
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function handlePreviewError(img) {
+      const parent = img.parentElement;
+      parent.innerHTML = '<div class="slot-preview-empty">No image uploaded</div>';
+    }
+
+    async function fetchLibrary() {
+      try {
+        const response = await fetch('/api/food-images');
+        foodImages = await response.json();
+        document.getElementById('gallery-count').textContent = `${foodImages.length} unique items`;
+        renderGallery(foodImages);
+      } catch (error) {
+        console.error('Failed to load food images library:', error);
+      }
+    }
+
+    function renderGallery(items) {
+      const grid = document.getElementById('gallery-grid');
+      grid.innerHTML = '';
+
+      if (items.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 2rem;">No food images found in the subfolder.</p>';
+        return;
+      }
+
+      items.forEach(file => {
+        const isVideo = file.endsWith('.mp4');
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.onclick = () => openModal(file);
+
+        if (isVideo) {
+          item.innerHTML = `
+            <video src="Food Images/${encodeURIComponent(file)}" muted preload="metadata"></video>
+            <div class="gallery-item-video-icon">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          `;
+        } else {
+          item.innerHTML = `<img src="Food Images/${encodeURIComponent(file)}" alt="Food Item" loading="lazy" />`;
+        }
+        grid.appendChild(item);
+      });
+    }
+
+    function filterGallery(type) {
+      // Update filter active styling
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (type === 'all') {
+        renderGallery(foodImages);
+      } else if (type === 'video') {
+        const videos = foodImages.filter(f => f.endsWith('.mp4'));
+        renderGallery(videos);
+      } else {
+        const images = foodImages.filter(f => !f.endsWith('.mp4'));
+        renderGallery(images);
+      }
+    }
+
+    function openModal(file) {
+      selectedMedia = file;
+      const isVideo = file.endsWith('.mp4');
+      const previewArea = document.getElementById('modal-preview');
+      const filenameLabel = document.getElementById('modal-filename');
+      const actionsList = document.getElementById('modal-actions');
+
+      filenameLabel.textContent = `Food Images/${file}`;
+
+      if (isVideo) {
+        previewArea.innerHTML = `<video src="Food Images/${encodeURIComponent(file)}" controls autoplay muted style="width: 100%; height: 100%;"></video>`;
+      } else {
+        previewArea.innerHTML = `<img src="Food Images/${encodeURIComponent(file)}" alt="Selected Food Item" />`;
+      }
+
+      // Populate assignment actions list
+      actionsList.innerHTML = '';
+      WEBSITE_SLOTS.forEach(slot => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-assign';
+        btn.onclick = () => assignImage(slot.file, slot.name);
+        
+        let warning = '';
+        if (isVideo) {
+          warning = ' <span style="color: #ff9800; font-size: 0.7rem;">(Video Warning)</span>';
+        }
+        
+        btn.innerHTML = `
+          <span>Replace <strong>${slot.name}</strong>${warning}</span>
+          <span class="target-file">${slot.file}</span>
+        `;
+        actionsList.appendChild(btn);
+      });
+
+      document.getElementById('detail-modal').classList.add('open');
+    }
+
+    function closeModal() {
+      // Pause video if playing
+      const video = document.querySelector('#modal-preview video');
+      if (video) video.pause();
+
+      document.getElementById('detail-modal').classList.remove('open');
+      selectedMedia = null;
+    }
+
+    async function assignImage(targetFile, slotName) {
+      if (!selectedMedia) return;
+
+      try {
+        const response = await fetch('/api/replace-image', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            target: targetFile,
+            source: selectedMedia
+          })
+        });
+
+        const result = await response.json();
+        if (result.success) {
+          showToast(`Successfully set to ${slotName}!`, true);
+          closeModal();
+          
+          // Re-render slots to refresh previews
+          renderSlots();
+          
+          // Add highlighting flash to card
+          const cardId = WEBSITE_SLOTS.find(s => s.file === targetFile).id;
+          const card = document.getElementById(`slot-${cardId}`);
+          if (card) {
+            card.classList.add('active-target');
+            setTimeout(() => card.classList.remove('active-target'), 2000);
+          }
+        } else {
+          showToast(`Error: ${result.error || 'Failed to replace image.'}`, false);
+        }
+      } catch (err) {
+        console.error('Error assigning image:', err);
+        showToast('Error communicating with server.', false);
+      }
+    }
+
+    function showToast(message, isSuccess) {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toast-text');
+      const toastIcon = toast.querySelector('.toast-icon');
+
+      toastText.textContent = message;
+      if (isSuccess) {
+        toast.className = 'toast show toast-success';
+        toastIcon.textContent = '✓';
+      } else {
+        toast.className = 'toast show';
+        toastIcon.textContent = '✕';
+        toastIcon.style.color = '#f44336';
+      }
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+  </script>
+</body>
+</html>

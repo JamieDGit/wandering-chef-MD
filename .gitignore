@@ -1,1 +1,7 @@
 .vercel
+.DS_Store
+node_modules/
+logo.psd
+DSC_7906_pp.pdf
+WANDERING CHEF/
+*.log

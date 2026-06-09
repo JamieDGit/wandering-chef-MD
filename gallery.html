@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Combined Event Gallery — Wandering Chef</title>
+  <meta name="description" content="View the full visual catalog of the Wandering Chef — catering gallery for weddings, bar mitzvahs, bris, kiddushes, and holiday events." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Custom gallery page styles */
+    .gallery-filter-container {
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .gallery-category-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    
+    .gallery-cat-btn {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.25rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-cat-btn.active, .gallery-cat-btn:hover {
+      background-color: var(--gold);
+      color: var(--charcoal);
+      border-color: var(--gold);
+      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+    }
+    
+    .gallery-masonry-grid {
+      columns: 4 240px;
+      column-gap: 1.5rem;
+      width: 100%;
+    }
+    
+    .gallery-masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+      background-color: var(--dark-grey);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .gallery-masonry-item:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-color: var(--gold);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+    
+    .gallery-masonry-item img, .gallery-masonry-item video {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.3s;
+    }
+    
+    .gallery-masonry-item-video-indicator {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.75);
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    
+    .gallery-masonry-item-video-indicator svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--gold);
+      margin-left: 2px;
+    }
+    
+    .gallery-masonry-item-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(18, 16, 14, 0.9));
+      padding: 1.5rem 1rem 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    
+    .gallery-masonry-item:hover .gallery-masonry-item-overlay {
+      opacity: 1;
+    }
+    
+    .gallery-item-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .gallery-item-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+    }
+
+    /* 50% Viewport Lightbox Image and controls */
+    #lightbox-img {
+      max-width: 50vw !important;
+      max-height: 50vh !important;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+    @media (max-width: 768px) {
+      #lightbox-img {
+        max-width: 75vw !important;
+        max-height: 55vh !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <a class="nav-brand" href="index.html" id="nav-logo">Wandering <span>Chef</span></a>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html" id="nav-home">Home</a></li>
+      <li><a href="catering.html" id="nav-catering">Catering</a></li>
+      <li><a href="gallery.html" class="active" id="nav-gallery">Gallery</a></li>
+      <li><a href="contact.html" class="nav-contact-btn" id="nav-contact">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-content">
+    <!-- PAGE HERO -->
+    <header class="page-hero" id="page-hero">
+      <div class="page-hero-bg" style="background-image: url('hero_catering.png');"></div>
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-content container">
+        <a href="catering.html" class="btn-back">← Back to Catering</a>
+        <span class="section-label">Visual Portfolio</span>
+        <h1 class="section-title" style="font-size: clamp(2.2rem,5vw,4rem);">Combined Event Gallery</h1>
+      </div>
+    </header>
+
+    <!-- GALLERY PORTFOLIO -->
+    <section id="portfolio-gallery">
+      <div class="container">
+        
+
+
+        <!-- Masonry Grid -->
+        <div class="gallery-masonry-grid fade-in fade-in-delay-1" id="masonry-grid">
+          <!-- Populated dynamically -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">Wandering <span>Chef</span></div>
+          <nav class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="catering.html">Catering</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <p class="footer-copy">&copy; 2026 Wandering Chef. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scroll Up Button -->
+  <button id="scrollUpBtn" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+  </button>
+
+  <!-- Lightbox (Handles Images with Viewport Scale) -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" aria-label="Close lightbox">✕</button>
+    <div id="lightbox-content">
+      <img src="" alt="" id="lightbox-img" style="display:none;" />
+    </div>
+  </div>
+
+  <!-- Load gallery data array -->
+  <script src="gallery-data.js"></script>
+  <script src="main.js"></script>
+  <script>
+    function initGallery() {
+      const grid = document.getElementById('masonry-grid');
+      grid.innerHTML = '';
+
+      GALLERY_IMAGES.forEach((file, idx) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-masonry-item';
+        item.dataset.file = file;
+
+        // encodeURIComponent handles spaces and brackets in filenames perfectly!
+        item.innerHTML = `
+          <img src="Food Images/${encodeURIComponent(file)}" alt="Wandering Chef Catering Event ${idx + 1}" loading="lazy" />
+        `;
+        
+        item.addEventListener('click', () => openLightbox(file));
+        grid.appendChild(item);
+      });
+    }
+
+    function openLightbox(file) {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+
+      // Temporarily hide or scale down for transition effect
+      img.style.opacity = 0;
+      img.style.transform = 'scale(0.95)';
+      
+      // Load new image
+      img.src = `Food Images/${encodeURIComponent(file)}`;
+      
+      img.onload = () => {
+        img.style.display = 'block';
+        img.offsetHeight; // Force reflow
+        img.style.opacity = 1;
+        img.style.transform = 'scale(1)';
+      };
+
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function initCustomLightboxClose() {
+      const lightbox = document.getElementById('lightbox');
+      const closeBtn = lightbox.querySelector('.lightbox-close');
+
+      function close() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      closeBtn.addEventListener('click', close);
+
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === document.getElementById('lightbox-content') || e.target === document.getElementById('lightbox-img')) close();
+      });
+
+      // Keyboard support to close
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') {
+          close();
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initGallery();
+      initCustomLightboxClose();
+    });
+  </script>
+</body>
+</html>
