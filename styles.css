@@ -1107,21 +1107,26 @@ section {
   }
 
   .nav-links {
-    position: fixed;
-    top: var(--nav-height);
-    left: 0;
-    right: 0;
-    background: rgba(26,22,18,0.98);
-    flex-direction: column;
-    padding: 1.5rem;
-    gap: 0.5rem;
-    transform: translateY(-110%);
-    transition: transform var(--transition);
-    border-bottom: 1px solid var(--border);
+    position: static;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    gap: 0.2rem;
+    transform: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin-left: auto;
+    transition: none;
   }
 
-  .nav-links.open {
-    transform: translateY(0);
+  .nav-links a {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .nav-contact-btn {
+    display: none !important;
   }
 
   .dropdown-menu {
@@ -1141,7 +1146,7 @@ section {
   }
 
   .hamburger {
-    display: flex;
+    display: none !important;
   }
 
   .bio-layout {
