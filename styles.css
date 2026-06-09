@@ -1110,6 +1110,10 @@ section {
     position: static;
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     padding: 0;
     gap: 0.2rem;
     transform: none;
@@ -1118,6 +1122,10 @@ section {
     box-shadow: none;
     margin-left: auto;
     transition: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-links a {
