@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catering Services — Wandering Chef</title>
+  <meta name="description" content="Wandering Chef offers premium kosher catering for Bris, Kiddush, Bar Mitzvahs, Bat Mitzvahs, Weddings, and more. Explore all services by John Caplan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <a class="nav-brand" href="index.html" id="nav-logo">Wandering <span>Chef</span></a>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html" id="nav-home">Home</a></li>
+      <li><a href="bio.html" id="nav-bio">About John</a></li>
+      <li><a href="catering.html" id="nav-catering">Catering</a></li>
+          <li><a href="bris-kiddush.html">Bris &amp; Kiddushes</a></li>
+          <li><a href="bar-mitzvah.html">Bar &amp; Bat Mitzvahs</a></li>
+          <li><a href="other-events.html">Other Celebrations</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html" class="nav-contact-btn" id="nav-contact">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-content">
+    <!-- PAGE HERO -->
+    <header class="page-hero" id="page-hero">
+      <div class="page-hero-bg" style="background-image: url('hero_catering.png');"></div>
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-content container">
+        <a href="index.html" class="btn-back" id="back-home">← Back to Home</a>
+        <span class="section-label">What We Do</span>
+        <h1 class="section-title" style="font-size: clamp(2.2rem,5vw,4rem);">Our Catering Services</h1>
+      </div>
+    </header>
+
+    <!-- OVERVIEW TEXT -->
+    <section id="catering-overview">
+      <div class="container">
+        <div class="text-center fade-in" style="max-width:700px; margin:0 auto;">
+          <span class="section-label">Every Occasion, Every Detail</span>
+          <h2 class="section-title">Crafted for Life's<br>Greatest Moments</h2>
+          <div class="divider center"></div>
+          <p class="section-subtitle">Whether you're celebrating a sacred milestone or a grand social event, Wandering Chef delivers an exceptional dining experience tailored precisely to your vision, your guests, and your traditions.</p>
+        </div>
+
+        <!-- HOW IT WORKS -->
+        <div class="services-grid" style="margin-top:4rem;">
+          <div class="menu-section fade-in" style="border-radius:16px; text-align:center; padding:2.5rem 2rem;">
+            <div style="width:60px;height:60px;background:rgba(200,169,110,0.15);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);font-weight:700;">1</div>
+            <h3 class="menu-section-title" style="text-align:center;">Consultation</h3>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.8;">We start with a conversation. Tell us your vision, your guest count, your dietary needs, and your dream for the day.</p>
+          </div>
+          <div class="menu-section fade-in fade-in-delay-1" style="border-radius:16px; text-align:center; padding:2.5rem 2rem;">
+            <div style="width:60px;height:60px;background:rgba(200,169,110,0.15);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);font-weight:700;">2</div>
+            <h3 class="menu-section-title" style="text-align:center;">Custom Menu</h3>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.8;">We craft a bespoke menu designed around your event type, guest preferences, and seasonal ingredients — all 100% kosher certified.</p>
+          </div>
+          <div class="menu-section fade-in fade-in-delay-2" style="border-radius:16px; text-align:center; padding:2.5rem 2rem;">
+            <div style="width:60px;height:60px;background:rgba(200,169,110,0.15);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);font-weight:700;">3</div>
+            <h3 class="menu-section-title" style="text-align:center;">Flawless Execution</h3>
+            <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.8;">On the day of your event, our team handles every detail — from setup to service to cleanup — so you can be fully present.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE CARDS -->
+    <section id="catering-services" style="background:rgba(35,31,26,0.6);">
+      <div class="container">
+        <div class="text-center fade-in">
+          <span class="section-label">Select a Service</span>
+          <h2 class="section-title">Choose Your Celebration</h2>
+          <div class="divider center"></div>
+        </div>
+
+        <div class="services-grid">
+          <a href="bris-kiddush.html" class="service-card fade-in fade-in-delay-1" id="catering-card-bris">
+            <div class="service-card-image-wrap">
+              <img class="service-card-image" src="bris_kiddush.png" alt="Bris and Kiddush Catering" loading="lazy" />
+            </div>
+            <div class="service-card-body">
+              <span class="service-card-tag">Sacred Beginnings</span>
+              <h3 class="service-card-title">Bris &amp; Kiddushes</h3>
+              <p class="service-card-desc">Traditional morning and midday celebrations featuring bagel stations, smoked fish platters, kugel, rugelach, and more.</p>
+              <span class="service-card-link">View Menu &amp; Gallery →</span>
+            </div>
+          </a>
+
+          <a href="bar-mitzvah.html" class="service-card fade-in fade-in-delay-2" id="catering-card-bm">
+            <div class="service-card-image-wrap">
+              <img class="service-card-image" src="bar_mitzvah.png" alt="Bar and Bat Mitzvah Catering" loading="lazy" />
+            </div>
+            <div class="service-card-body">
+              <span class="service-card-tag">Coming of Age</span>
+              <h3 class="service-card-title">Bar &amp; Bat Mitzvahs</h3>
+              <p class="service-card-desc">Full-service catering packages for cocktail hours, sit-down dinners, and dessert receptions fit for this landmark occasion.</p>
+              <span class="service-card-link">View Menu &amp; Gallery →</span>
+            </div>
+          </a>
+
+          <a href="other-events.html" class="service-card fade-in fade-in-delay-3" id="catering-card-other">
+            <div class="service-card-image-wrap">
+              <img class="service-card-image" src="wedding_catering.png" alt="Wedding and other event catering" loading="lazy" />
+            </div>
+            <div class="service-card-body">
+              <span class="service-card-tag">All Celebrations</span>
+              <h3 class="service-card-title">Weddings &amp; More</h3>
+              <p class="service-card-desc">Shabbat dinners, holiday gatherings, corporate events, anniversaries, and weddings — no occasion too grand or too intimate.</p>
+              <span class="service-card-link">View Menu &amp; Gallery →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="highlight-band" id="catering-cta">
+      <div class="container text-center fade-in">
+        <span class="section-label" style="color:rgba(26,22,18,0.65);">Let's Begin</span>
+        <h2 class="section-title">Start Planning Today</h2>
+        <p class="section-subtitle" style="margin:1rem auto 2rem;">Reach out to discuss your event and receive a custom quote.</p>
+        <a href="contact.html" class="btn btn-primary" id="catering-cta-btn">Contact John</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">Wandering <span>Chef</span></div>
+          <nav class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="bio.html">About</a>
+            <a href="catering.html">Catering</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <p class="footer-copy">&copy; 2026 Wandering Chef. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scroll Up Button -->
+  <button id="scrollUpBtn" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+  </button>
+  <script src="main.js"></script>
+</body>
+</html>

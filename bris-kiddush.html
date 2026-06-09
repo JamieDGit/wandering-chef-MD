@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bris &amp; Kiddush Catering — Wandering Chef</title>
+  <meta name="description" content="Wandering Chef specializes in beautiful Bris and Kiddush catering. Traditional spreads with smoked fish, bagels, kugel, and more. Gallery and full menu by John Caplan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <a class="nav-brand" href="index.html" id="nav-logo">Wandering <span>Chef</span></a>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html" id="nav-home">Home</a></li>
+      <li><a href="bio.html" id="nav-bio">About John</a></li>
+      <li><a href="catering.html" id="nav-catering">Catering</a></li>
+          <li><a href="bris-kiddush.html" style="color:var(--gold);">Bris &amp; Kiddushes</a></li>
+          <li><a href="bar-mitzvah.html">Bar &amp; Bat Mitzvahs</a></li>
+          <li><a href="other-events.html">Other Celebrations</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html" class="nav-contact-btn" id="nav-contact">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-content">
+    <!-- PAGE HERO -->
+    <header class="page-hero" id="page-hero">
+      <div class="page-hero-bg" style="background-image: url('bris_kiddush.png');"></div>
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-content container">
+        <a href="catering.html" class="btn-back" id="back-catering">← Back to Catering</a>
+        <span class="section-label">Sacred Beginnings</span>
+        <h1 class="section-title" style="font-size: clamp(2.2rem,5vw,4rem);">Bris &amp; Kiddush Catering</h1>
+      </div>
+    </header>
+
+    <!-- INTRO -->
+    <section id="bris-intro">
+      <div class="container">
+        <div class="bio-layout">
+          <div class="fade-in">
+            <span class="section-label">The Morning Celebration</span>
+            <h2 class="section-title">Honoring Life's<br>Most Sacred Moments</h2>
+            <div class="divider"></div>
+            <p class="bio-text">A Bris or Kiddush calls for a spread that reflects the warmth and joy of the occasion. The Wandering Chef brings tradition and elegance together — from artfully arranged smoked fish stations to freshly baked challah, beautifully presented fruit platters, and decadent pastry tables.</p>
+            <p class="bio-text">We understand that a Bris is not just a meal — it's a gathering of family and friends to witness and celebrate one of Judaism's most profound traditions. Our team handles every culinary detail so you can focus on what matters most.</p>
+            <a href="contact.html" class="btn btn-primary" id="bris-cta-btn" style="margin-top:1rem;">Book for Your Event</a>
+          </div>
+          <div class="bio-image-wrap fade-in fade-in-delay-1">
+            <img class="bio-image" src="bris_kiddush.png" alt="Bris and Kiddush spread" loading="lazy" style="aspect-ratio:4/3;" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="bris-gallery" style="background:rgba(35,31,26,0.6);">
+      <div class="container">
+        <div class="text-center fade-in">
+          <span class="section-label">Photo Gallery</span>
+          <h2 class="section-title">See Our Work</h2>
+          <div class="divider center"></div>
+          <p class="section-subtitle">A glimpse at some of our most beautiful Bris and Kiddush celebrations.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item fade-in fade-in-delay-1">
+            <img src="bris_kiddush.png" alt="Kiddush table spread with silver wine cups and challah" loading="lazy" />
+            <div class="gallery-item-overlay">
+              <span class="gallery-item-caption">Kiddush Table Spread</span>
+            </div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-2">
+            <img src="appetizers_platter.png" alt="Gourmet appetizer platter" loading="lazy" />
+            <div class="gallery-item-overlay">
+              <span class="gallery-item-caption">Gourmet Appetizer Platter</span>
+            </div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-3">
+            <img src="shabbat_dinner.png" alt="Elegant Shabbat celebration table" loading="lazy" />
+            <div class="gallery-item-overlay">
+              <span class="gallery-item-caption">Festive Celebration Table</span>
+            </div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-1">
+            <img src="dessert_table.png" alt="Dessert and pastry display" loading="lazy" />
+            <div class="gallery-item-overlay">
+              <span class="gallery-item-caption">Dessert &amp; Pastry Display</span>
+            </div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-2">
+            <img src="hero_catering.png" alt="Full catering spread" loading="lazy" />
+            <div class="gallery-item-overlay">
+              <span class="gallery-item-caption">Full Catering Spread</span>
+            </div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-3">
+            <img src="catering_kitchen.png" alt="Kitchen preparation" loading="lazy" />
+            <div class="gallery-item-overlay">
+              <span class="gallery-item-caption">Behind the Scenes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="bris-menu">
+      <div class="container">
+        <div class="text-center fade-in">
+          <span class="section-label">Sample Menu</span>
+          <h2 class="section-title">Bris &amp; Kiddush Menu</h2>
+          <div class="divider center"></div>
+          <p class="section-subtitle" style="margin:0 auto 2rem;">Menus are fully customizable. Prices and packages available upon consultation.</p>
+        </div>
+
+        <div class="menu-section fade-in fade-in-delay-1">
+          <h3 class="menu-section-title">The Bagel &amp; Lox Station</h3>
+          <div class="menu-items">
+            <div class="menu-item">Nova Lox &amp; Smoked Salmon</div>
+            <div class="menu-item">Everything, Plain &amp; Sesame Bagels</div>
+            <div class="menu-item">Whipped Cream Cheese (Plain &amp; Scallion)</div>
+            <div class="menu-item">Capers, Red Onion &amp; Tomato</div>
+            <div class="menu-item">Sable &amp; Whitefish Salad</div>
+            <div class="menu-item">Pickled Herring in Cream Sauce</div>
+          </div>
+        </div>
+
+        <div class="menu-section fade-in fade-in-delay-2">
+          <h3 class="menu-section-title">Hot Items</h3>
+          <div class="menu-items">
+            <div class="menu-item">Noodle Kugel (sweet)</div>
+            <div class="menu-item">Potato Kugel</div>
+            <div class="menu-item">Broccoli Quiche</div>
+            <div class="menu-item">Mini Blintzes with Blueberry Compote</div>
+            <div class="menu-item">Scrambled Eggs Station (to order)</div>
+            <div class="menu-item">Franks in Blankets</div>
+          </div>
+        </div>
+
+        <div class="menu-section fade-in fade-in-delay-3">
+          <h3 class="menu-section-title">Salads &amp; Platters</h3>
+          <div class="menu-items">
+            <div class="menu-item">Israeli Salad</div>
+            <div class="menu-item">Couscous Salad with Roasted Vegetables</div>
+            <div class="menu-item">Caesar Salad</div>
+            <div class="menu-item">Antipasto Platter</div>
+            <div class="menu-item">Fresh Fruit Tower</div>
+            <div class="menu-item">Crudité &amp; Hummus</div>
+          </div>
+        </div>
+
+        <div class="menu-section fade-in fade-in-delay-1">
+          <h3 class="menu-section-title">Desserts &amp; Pastries</h3>
+          <div class="menu-items">
+            <div class="menu-item">Assorted Rugelach</div>
+            <div class="menu-item">Honey Cake</div>
+            <div class="menu-item">Babka (Chocolate &amp; Cinnamon)</div>
+            <div class="menu-item">Mandelbrot</div>
+            <div class="menu-item">Assorted Danish &amp; Croissants</div>
+            <div class="menu-item">Chocolate Mousse Cups</div>
+          </div>
+        </div>
+
+        <div class="menu-section fade-in fade-in-delay-2">
+          <h3 class="menu-section-title">Beverages</h3>
+          <div class="menu-items">
+            <div class="menu-item">Orange Juice &amp; Apple Juice</div>
+            <div class="menu-item">Coffee &amp; Tea Station</div>
+            <div class="menu-item">Sparkling &amp; Still Water</div>
+            <div class="menu-item">Kiddush Wine (Mevushal)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="highlight-band" id="bris-cta-band">
+      <div class="container text-center fade-in">
+        <span class="section-label" style="color:rgba(26,22,18,0.65);">Plan Your Celebration</span>
+        <h2 class="section-title">Let's Make It Perfect</h2>
+        <p class="section-subtitle" style="margin:1rem auto 2rem;">Contact John to discuss your Bris or Kiddush catering needs.</p>
+        <a href="contact.html" class="btn btn-primary" id="bris-bottom-cta">Get a Custom Quote</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">Wandering <span>Chef</span></div>
+          <nav class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="bio.html">About</a>
+            <a href="catering.html">Catering</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <p class="footer-copy">&copy; 2026 Wandering Chef. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scroll Up Button -->
+  <button id="scrollUpBtn" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+  </button>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" aria-label="Close lightbox">✕</button>
+    <img src="" alt="" />
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wandering Chef — Premium Kosher Catering by John Caplan</title>
+  <meta name="description" content="Wandering Chef by John Caplan — Premier kosher catering for Bar Mitzvahs, Bat Mitzvahs, Bris, Kiddushes, Weddings, and all your special occasions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================
+       NAVIGATION
+       ============================ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <a class="nav-brand" href="index.html" id="nav-logo">Wandering <span>Chef</span></a>
+
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html" class="active" id="nav-home">Home</a></li>
+      <li><a href="bio.html" id="nav-bio">About John</a></li>
+      <li><a href="catering.html" id="nav-catering">Catering</a></li>
+      <li><a href="contact.html" class="nav-contact-btn" id="nav-contact">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================
+       HERO
+       ============================ -->
+  <header class="hero" id="hero">
+    <div class="hero-bg" id="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Premium Kosher Catering</span>
+      <h1 class="hero-title">Where Every Meal<br>Becomes a <em>Memory</em></h1>
+      <p class="hero-subtitle">Chef John Caplan crafts unforgettable culinary experiences<br>for life's most cherished celebrations.</p>
+      <div class="hero-buttons">
+        <a href="catering.html" class="btn btn-primary" id="hero-btn-catering">Explore Services</a>
+        <a href="contact.html" class="btn btn-outline" id="hero-btn-contact">Get in Touch</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================
+       INTRO / ABOUT SNIPPET
+       ============================ -->
+  <section id="about-snippet">
+    <div class="container">
+      <div class="bio-layout">
+        <div class="bio-image-wrap fade-in">
+          <img class="bio-image" src="chef_portrait.png" alt="Chef John Caplan" loading="lazy" />
+        </div>
+        <div class="fade-in fade-in-delay-1">
+          <span class="section-label">Meet the Chef</span>
+          <h2 class="section-title">John Caplan,<br>The Wandering Chef</h2>
+          <div class="divider"></div>
+          <blockquote class="bio-quote">"Great food isn't just nourishment — it's love, tradition, and memory on a plate."</blockquote>
+          <p class="bio-text">For over two decades, Chef John Caplan has been the trusted name behind some of the New York area's most beautiful Jewish celebrations. From intimate Bris ceremonies to grand Bar Mitzvah galas, John brings an unmatched passion for elevated kosher cuisine to every event he touches.</p>
+          <p class="bio-text">As the Wandering Chef, John has traveled, tasted, and trained across the world — bringing those flavors home to your table.</p>
+          <a href="bio.html" class="btn btn-outline" id="about-read-more">Read John's Story</a>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-item fade-in">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-item fade-in fade-in-delay-1">
+          <div class="stat-number">1,200+</div>
+          <div class="stat-label">Events Catered</div>
+        </div>
+        <div class="stat-item fade-in fade-in-delay-2">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Kosher Certified</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       SERVICES
+       ============================ -->
+  <section id="services" style="background: rgba(35,31,26,0.55);">
+    <div class="container">
+      <div class="text-center fade-in">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title">Catering for Every Occasion</h2>
+        <div class="divider center"></div>
+        <p class="section-subtitle">From sacred milestones to grand celebrations, we bring the finest kosher cuisine to your most important moments.</p>
+      </div>
+
+      <div class="services-grid">
+        <a href="bris-kiddush.html" class="service-card fade-in fade-in-delay-1" id="card-bris">
+          <div class="service-card-image-wrap">
+            <img class="service-card-image" src="bris_kiddush.png" alt="Bris and Kiddush Catering" loading="lazy" />
+          </div>
+          <div class="service-card-body">
+            <span class="service-card-tag">Sacred Beginnings</span>
+            <h3 class="service-card-title">Bris &amp; Kiddushes</h3>
+            <p class="service-card-desc">Beautifully curated spreads for the holiest of milestones — from traditional smoked salmon tables to warm bagel brunches with all the trimmings.</p>
+            <span class="service-card-link">View Menu &amp; Gallery →</span>
+          </div>
+        </a>
+
+        <a href="bar-mitzvah.html" class="service-card fade-in fade-in-delay-2" id="card-bar-mitzvah">
+          <div class="service-card-image-wrap">
+            <img class="service-card-image" src="bar_mitzvah.png" alt="Bar and Bat Mitzvah Catering" loading="lazy" />
+          </div>
+          <div class="service-card-body">
+            <span class="service-card-tag">Coming of Age</span>
+            <h3 class="service-card-title">Bar &amp; Bat Mitzvahs</h3>
+            <p class="service-card-desc">Spectacular multi-course meals, lavish cocktail hours, and stunning dessert displays that match the grandeur of this milestone celebration.</p>
+            <span class="service-card-link">View Menu &amp; Gallery →</span>
+          </div>
+        </a>
+
+        <a href="other-events.html" class="service-card fade-in fade-in-delay-3" id="card-other">
+          <div class="service-card-image-wrap">
+            <img class="service-card-image" src="wedding_catering.png" alt="Wedding and Other Event Catering" loading="lazy" />
+          </div>
+          <div class="service-card-body">
+            <span class="service-card-tag">All Celebrations</span>
+            <h3 class="service-card-title">Weddings &amp; More</h3>
+            <p class="service-card-desc">Shabbat dinners, holiday gatherings, corporate events, and weddings — no celebration is too large or too intimate for the Wandering Chef.</p>
+            <span class="service-card-link">View Menu &amp; Gallery →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       HIGHLIGHT BAND
+       ============================ -->
+  <section class="highlight-band" id="cta-band">
+    <div class="container text-center fade-in">
+      <span class="section-label" style="color: rgba(26,22,18,0.65);">Plan Your Event</span>
+      <h2 class="section-title">Ready to Create Something<br>Extraordinary?</h2>
+      <p class="section-subtitle" style="margin: 1rem auto 2rem;">Let's talk about your vision. Whether it's 20 guests or 500, Chef John is ready to make it unforgettable.</p>
+      <a href="contact.html" class="btn btn-primary" id="cta-contact-btn">Book a Consultation</a>
+    </div>
+  </section>
+
+  <!-- ============================
+       CONTACT SECTION (Home)
+       ============================ -->
+  <section class="contact-section" id="contact-home">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="fade-in">
+          <span class="section-label">Get in Touch</span>
+          <h2 class="section-title">Let's Make Your<br>Event Unforgettable</h2>
+          <div class="divider"></div>
+          <p class="bio-text">Have a question? Ready to book? We'd love to hear from you. Reach out by phone, email, or Instagram and let's start planning.</p>
+
+          <div class="contact-info-item" id="contact-phone-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="contact-info-label">Phone</span>
+              <p class="contact-info-value"><a href="tel:+15551234567" id="contact-phone-link">[Your Phone Number]</a></p>
+            </div>
+          </div>
+
+          <div class="contact-info-item" id="contact-email-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="contact-info-label">Email</span>
+              <p class="contact-info-value"><a href="mailto:john@wanderingchef.com" id="contact-email-link">[Your Email Address]</a></p>
+            </div>
+          </div>
+
+          <div class="contact-info-item" id="contact-instagram-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="contact-info-label">Instagram</span>
+              <p class="contact-info-value"><a href="https://instagram.com/" target="_blank" rel="noopener" id="contact-instagram-link">@[YourInstagram]</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in fade-in-delay-2">
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; margin-bottom:1.5rem; color:var(--cream);">Send a Message</h3>
+          <form class="contact-form" id="home-contact-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label for="home-name">Your Name</label>
+              <input type="text" id="home-name" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="home-email">Email Address</label>
+              <input type="email" id="home-email" name="email" placeholder="jane@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="home-event">Event Type</label>
+              <select id="home-event" name="event">
+                <option value="">Select an event…</option>
+                <option value="bris">Bris / Kiddush</option>
+                <option value="bar-mitzvah">Bar / Bat Mitzvah</option>
+                <option value="wedding">Wedding</option>
+                <option value="shabbat">Shabbat Dinner</option>
+                <option value="holiday">Holiday Celebration</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="home-message">Message</label>
+              <textarea id="home-message" name="message" placeholder="Tell us about your event…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="home-submit-btn" style="align-self:flex-start;">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       FOOTER
+       ============================ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">Wandering <span>Chef</span></div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="index.html" id="footer-home">Home</a>
+          <a href="bio.html" id="footer-bio">About</a>
+          <a href="catering.html" id="footer-catering">Catering</a>
+          <a href="contact.html" id="footer-contact">Contact</a>
+        </nav>
+        <p class="footer-copy">&copy; 2026 Wandering Chef. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Up Button -->
+  <button id="scrollUpBtn" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+  </button>
+
+  <script>
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('home-submit-btn');
+      btn.textContent = '✓ Message Sent!';
+      btn.style.background = '#4caf50';
+      setTimeout(() => {
+        btn.textContent = 'Send Message';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+  <script src="main.js"></script>
+</body>
+</html>
