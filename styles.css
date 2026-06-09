@@ -1090,6 +1090,20 @@ section {
 @media (max-width: 900px) {
   .navbar {
     padding: 0 1.5rem;
+    background: var(--dark) !important;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  }
+
+  .hero {
+    background-color: var(--dark);
+  }
+
+  .hero-bg {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    transform: none !important;
+    animation: none !important;
   }
 
   .nav-links {
