@@ -247,6 +247,40 @@
       });
     }
 
+    function initHeroSlideshow() {
+      const hero = document.getElementById('page-hero');
+      const oldBg = hero.querySelector('.page-hero-bg');
+      if (oldBg) {
+        oldBg.remove();
+      }
+
+      // Pick a selection of diverse images for the slideshow
+      // We can use 6 images from GALLERY_IMAGES
+      const slideshowImages = GALLERY_IMAGES.slice(0, 6);
+
+      const slides = [];
+
+      slideshowImages.forEach((file, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'page-hero-bg';
+        slide.style.backgroundImage = `url('Food Images/${encodeURIComponent(file)}')`;
+        slide.style.opacity = index === 0 ? '1' : '0';
+        slide.style.transition = 'opacity 1.5s ease-in-out';
+        
+        hero.insertBefore(slide, hero.firstChild);
+        slides.push(slide);
+      });
+
+      if (slides.length <= 1) return;
+
+      let currentSlide = 0;
+      setInterval(() => {
+        slides[currentSlide].style.opacity = '0';
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].style.opacity = '1';
+      }, 5000);
+    }
+
     function openLightbox(file) {
       const lightbox = document.getElementById('lightbox');
       const img = document.getElementById('lightbox-img');
@@ -296,6 +330,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       initGallery();
       initCustomLightboxClose();
+      initHeroSlideshow();
     });
   </script>
 </body>
