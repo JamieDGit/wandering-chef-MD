@@ -1178,6 +1178,18 @@ section {
   section {
     padding: 4rem 0;
   }
+
+  /* Make section labels much darker on mobile/tablet — easier to read */
+  .section-label {
+    color: #6b4f1a;
+    font-weight: 700;
+  }
+
+  /* Keep hero overlay labels bright white (on dark photo background) */
+  .page-hero-content .section-label {
+    color: #ffffff;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.95);
+  }
 }
 
 @media (max-width: 600px) {
@@ -1194,6 +1206,18 @@ section {
 
   .menu-items {
     grid-template-columns: 1fr;
+  }
+
+  /* Make section labels much darker and easier to read on mobile */
+  .section-label {
+    color: #6b4f1a;
+    font-weight: 700;
+  }
+
+  /* Ensure hero-overlay labels stay bright white on the dark image background */
+  .page-hero-content .section-label {
+    color: #ffffff;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.9);
   }
 }
 
