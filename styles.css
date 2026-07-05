@@ -255,16 +255,12 @@ ul {
   position: absolute;
   inset: 0;
   background-image: url('Logo.png');
-  background-size: cover;
+  background-size: 90% 90%; /* Sized down slightly so the chef hat is not cut off */
+  background-repeat: no-repeat;
   background-position: center;
-  transform: scale(1.05);
-  transition: transform 8s ease;
-  animation: heroZoom 12s ease-in-out infinite alternate;
-}
-
-@keyframes heroZoom {
-  from { transform: scale(1.0); }
-  to { transform: scale(1.08); }
+  transform: none;
+  transition: none;
+  animation: none; /* No zoom */
 }
 
 .hero-overlay {
@@ -1099,7 +1095,7 @@ section {
   }
 
   .hero-bg {
-    background-size: contain !important;
+    background-size: 90% 90% !important; /* Sized down slightly for mobile viewport safety */
     background-repeat: no-repeat !important;
     background-position: center !important;
     transform: none !important;
