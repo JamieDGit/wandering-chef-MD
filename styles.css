@@ -277,15 +277,20 @@ ul {
 
 @media (max-width: 768px) {
   .hero {
-    height: 45vh; /* Greatly reduced height for mobile layouts */
-    min-height: 250px; /* Reduced min-height threshold */
+    height: auto; /* Shrink to fit the logo image height exactly */
+    min-height: 0; /* Remove min-height limitations */
+    margin-top: var(--nav-height); /* Keep directly below navbar */
+    padding: 0.5rem 0 0 0; /* Minimal spacing at the top, none at the bottom */
+    align-items: center;
   }
   .hero-content {
-    padding: 0.5rem 1rem; /* Less vertical padding spacing */
+    padding: 0; /* Remove vertical spacing padding inside container */
+    height: auto; /* Shrink wrapper container to image height */
+    align-items: center;
   }
   .hero-logo-img {
-    max-width: 92%; /* Fits perfectly within the new shorter container bounds */
-    height: auto; /* Prevent vertical stretching or squeezing on mobile devices */
+    max-width: 95%; /* Maximized size for mobile viewports */
+    height: auto; /* Restrict height stretching */
   }
 }
 
