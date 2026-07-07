@@ -9,6 +9,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Preload first 8 gallery images for instantaneous loading on mobile devices -->
+  <link rel="preload" href="gallery-data.js" as="script" />
+  <script>
+    // Quick script block to start browser image downloading instantly before parsing finishes
+    [
+      "WhatsApp Image 2026-06-09 at 15.09.05 (1).jpeg",
+      "WhatsApp Image 2026-06-09 at 15.09.05 (2).jpeg",
+      "WhatsApp Image 2026-06-09 at 15.09.05 (3).jpeg",
+      "WhatsApp Image 2026-06-09 at 15.09.06 (1).jpeg",
+      "WhatsApp Image 2026-06-09 at 15.09.06 (11).jpeg"
+    ].forEach(img => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = 'Food Images/' + encodeURIComponent(img);
+      document.head.appendChild(link);
+    });
+  </script>
   <style>
     /* Custom gallery page styles */
     .gallery-filter-container {
@@ -184,8 +202,14 @@
         
 
 
+        <!-- Loading Spinner Container -->
+        <div class="gallery-loader-wrapper" id="gallery-loader">
+          <div class="spinner-ring"></div>
+          <p class="loader-text">Preparing Culinary Portfolio...</p>
+        </div>
+
         <!-- Masonry Grid -->
-        <div class="gallery-masonry-grid fade-in fade-in-delay-1" id="masonry-grid">
+        <div class="gallery-masonry-grid fade-in fade-in-delay-1" id="masonry-grid" style="opacity: 0; transition: opacity 0.5s ease;">
           <!-- Populated dynamically -->
         </div>
 
@@ -237,9 +261,9 @@
         item.className = 'gallery-masonry-item';
         item.dataset.file = file;
 
-        // encodeURIComponent handles spaces and brackets in filenames perfectly!
+        // Changed from lazy loading to instant browser preloading to solve refresh issues
         item.innerHTML = `
-          <img src="Food Images/${encodeURIComponent(file)}" alt="Wandering Chef Catering Event ${idx + 1}" loading="lazy" />
+          <img src="Food Images/${encodeURIComponent(file)}" alt="Wandering Chef Catering Event ${idx + 1}" />
         `;
         
         item.addEventListener('click', () => openLightbox(file));
@@ -330,6 +354,50 @@
       initGallery();
       initCustomLightboxClose();
       initHeroSlideshow();
+
+      // Monitor when key images have rendered so we can turn off the loader cleanly
+      const images = document.querySelectorAll('#masonry-grid img');
+      let loadedCount = 0;
+      const totalToWait = Math.min(images.length, 6); // Wait for the first 6 key images
+
+      function revealGallery() {
+        const loader = document.getElementById('gallery-loader');
+        const grid = document.getElementById('masonry-grid');
+        if (loader) {
+          loader.style.opacity = '0';
+          setTimeout(() => {
+            loader.style.display = 'none';
+            grid.style.opacity = '1';
+            // Trigger scroll visibility checks manually
+            if (typeof window.dispatchEvent === 'function') {
+              window.dispatchEvent(new Event('scroll'));
+            }
+          }, 300);
+        }
+      }
+
+      if (totalToWait === 0) {
+        revealGallery();
+      } else {
+        images.forEach((img, i) => {
+          if (i >= totalToWait) return;
+          if (img.complete) {
+            loadedCount++;
+            if (loadedCount >= totalToWait) revealGallery();
+          } else {
+            img.addEventListener('load', () => {
+              loadedCount++;
+              if (loadedCount >= totalToWait) revealGallery();
+            });
+            img.addEventListener('error', () => {
+              loadedCount++;
+              if (loadedCount >= totalToWait) revealGallery();
+            });
+          }
+        });
+        // Safety timeout of 1.5 seconds in case of slow connections
+        setTimeout(revealGallery, 1500);
+      }
     });
   </script>
 </body>
