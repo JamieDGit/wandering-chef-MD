@@ -243,12 +243,43 @@ ul {
    ========================================== */
 .hero {
   position: relative;
-  height: 100vh;
-  min-height: 650px;
+  height: 80vh; /* Reduced height to remove excess vertical whitespace */
+  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 1rem;
+  width: 100%;
+  max-width: 1100px; /* Made container wider */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: heroFadeUp 1.2s ease both;
+}
+
+.hero-logo-img {
+  width: 100%;
+  max-width: 950px; /* Increased maximum width to make the image much larger */
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh; /* Shorter header on mobile to prevent stretching */
+    min-height: 400px;
+  }
+  .hero-logo-img {
+    max-width: 95%; /* Make it fill more of the screen on mobile devices */
+  }
 }
 
 
@@ -263,32 +294,6 @@ ul {
   );
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem;
-  width: 100%;
-  max-width: 900px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: heroFadeUp 1.2s ease both;
-}
-
-.hero-logo-img {
-  width: 100%;
-  max-width: 700px;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .hero-logo-img {
-    max-width: 85%; /* Scales down perfectly on mobile viewports */
-  }
-}
 
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(40px); }
