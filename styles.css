@@ -274,11 +274,14 @@ ul {
 
 @media (max-width: 768px) {
   .hero {
-    height: 70vh; /* Shorter header on mobile to prevent stretching */
-    min-height: 400px;
+    height: 45vh; /* Greatly reduced height for mobile layouts */
+    min-height: 250px; /* Reduced min-height threshold */
+  }
+  .hero-content {
+    padding: 0.5rem 1rem; /* Less vertical padding spacing */
   }
   .hero-logo-img {
-    max-width: 95%; /* Make it fill more of the screen on mobile devices */
+    max-width: 92%; /* Fits perfectly within the new shorter container bounds */
   }
 }
 
