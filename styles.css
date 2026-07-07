@@ -243,32 +243,35 @@ ul {
    ========================================== */
 .hero {
   position: relative;
-  height: 80vh; /* Reduced height to remove excess vertical whitespace */
+  height: calc(100vh - var(--nav-height)); /* Fits remaining screen height exactly */
+  margin-top: var(--nav-height); /* Starts the hero block directly below the menu bar */
   min-height: 500px;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Start logo right at the top of the container */
   justify-content: center;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 0 1rem;
+  padding: 0;
   width: 100%;
-  max-width: 1100px; /* Made container wider */
+  max-width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Place logo at the top edge of the hero box */
   animation: heroFadeUp 1.2s ease both;
 }
 
 .hero-logo-img {
   width: 100%;
-  max-width: 950px; /* Increased maximum width to make the image much larger */
-  height: auto;
-  object-fit: contain;
+  max-width: 100%;
+  height: 100%; /* Fit screen height bounds exactly */
+  object-fit: contain; /* Keeps aspect ratio perfect and ensures visibility */
   display: block;
 }
 
@@ -282,6 +285,7 @@ ul {
   }
   .hero-logo-img {
     max-width: 92%; /* Fits perfectly within the new shorter container bounds */
+    height: auto; /* Prevent vertical stretching or squeezing on mobile devices */
   }
 }
 
