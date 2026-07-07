@@ -1161,8 +1161,8 @@ section {
   }
 
   .bio-layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr 1.5fr; /* Keep side-by-side layout on mobile screens */
+    gap: 1.5rem; /* Reduced gap spacing so it fits neatly */
   }
 
   .contact-grid {
@@ -1211,16 +1211,35 @@ section {
     grid-template-columns: 1fr;
   }
 
-  /* Make section labels much darker and easier to read on mobile */
-  .section-label {
-    color: #6b4f1a;
-    font-weight: 700;
+  /* Adapt side-by-side bio typography for small mobile viewports */
+  .bio-layout {
+    grid-template-columns: 1fr 1.3fr !important;
+    gap: 1rem !important;
+    align-items: start !important;
   }
-
-  /* Ensure hero-overlay labels stay bright white on the dark image background */
-  .page-hero-content .section-label {
-    color: #ffffff;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.9);
+  .bio-image-wrap::before {
+    inset: -6px !important; /* Thinner border margin space */
+    border-radius: 12px !important;
+  }
+  .bio-image {
+    border-radius: 10px !important;
+  }
+  .bio-quote {
+    font-size: 1rem !important;
+    margin: 0.75rem 0 !important;
+    padding-left: 0.75rem !important;
+  }
+  .bio-text {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .section-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .divider {
+    margin: 0.5rem 0 !important;
   }
 }
 
